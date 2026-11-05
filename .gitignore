@@ -1,0 +1,21 @@
+
+# Dependencias de Node.js
+node_modules/
+**/node_modules/
+
+# Archivos de entorno y credenciales
+.env
+**/.env
+
+# Archivos generados por Vite
+dist/
+**/dist/
+
+# Registros de errores
+npm-debug.log*
+yarn-debug.log*
+*.log
+
+# Archivos temporales del sistema
+.DS_Store
+Thumbs.db
