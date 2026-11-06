@@ -66,7 +66,7 @@ function App() {
     const obtenerActividades = async () => {
       try {
         const respuesta = await fetch(
-          '${API_URL}/api/actividades'
+          `${API_URL}/api/actividades`
         );
 
         if (!respuesta.ok) {
@@ -108,7 +108,7 @@ function App() {
       setCargando(true);
 
       const respuesta = await fetch(
-        '${API_URL}/api/estudiantes',
+        `${API_URL}/api/estudiantes`,
         {
           method: 'POST',
           headers: {
@@ -152,7 +152,7 @@ function App() {
 
     try {
       const respuesta = await fetch(
-        '${API_URL}/api/resultados',
+        `${API_URL}/api/resultados`,
         {
           method: 'POST',
           headers: {
@@ -192,7 +192,7 @@ function App() {
       setErrorReportes('');
 
       const urlReportes = estudianteFiltro === 'todos'
-        ? '${API_URL}/api/resultados'
+        ? `${API_URL}/api/resultados`
         : `${API_URL}/api/resultados?estudiante_id=${estudianteFiltro}`;
 
       const respuesta = await fetch(urlReportes);
@@ -207,7 +207,7 @@ function App() {
 
       setReportes(datos.resultados);
       const respuestaEstudiantes = await fetch(
-        '${API_URL}/api/estudiantes'
+        `${API_URL}/api/estudiantes`
       );
 
       const datosEstudiantes = await respuestaEstudiantes.json();
