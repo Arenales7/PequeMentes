@@ -7,9 +7,15 @@ node_modules/
 .env
 **/.env
 
-# Archivos generados por Vite
-dist/
-**/dist/
+# Certificados y claves privadas
+*.key
+*.pem
+*.p12
+*.pfx
+
+# Archivos generados de Vite
+# Se conserva frontend/dist para la entrega
+backend/dist/
 
 # Registros de errores
 npm-debug.log*

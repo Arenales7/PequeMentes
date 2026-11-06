@@ -1,3 +1,4 @@
+
 const express = require('express');
 const cors = require('cors');
 require('dotenv').config();
@@ -8,17 +9,17 @@ const estudiantesRoutes = require('./routes/estudiantesRoutes');
 const actividadesRoutes = require('./routes/actividadesRoutes');
 const resultadosRoutes = require('./routes/resultadosRoutes');
 
-console.log('Estudiantes:', typeof estudiantesRoutes);
-console.log('Actividades:', typeof actividadesRoutes);
-
 const app = express();
 
 // Middleware
+const allowedOrigins = [
+    'http://localhost:5173',
+    'http://localhost:4173',
+    process.env.FRONTEND_URL
+].filter(Boolean);
+
 app.use(cors({
-    origin: [
-        'http://localhost:5173',
-        'http://localhost:4173'
-    ]
+    origin: allowedOrigins
 }));
 
 app.use(express.json());
@@ -49,8 +50,7 @@ app.get('/api/test-db', async (req, res) => {
         });
 
     } catch (error) {
-        console.error('ERROR DETALLADO DE MYSQL:');
-        console.error(error);
+        console.error('ERROR DETALLADO DE MYSQL:', error);
 
         res.status(500).json({
             mensaje: 'Error al consultar MySQL',
@@ -63,6 +63,6 @@ app.get('/api/test-db', async (req, res) => {
 // Iniciar servidor
 const PORT = process.env.PORT || 3000;
 
-app.listen(PORT, () => {
+app.listen(PORT, '0.0.0.0', () => {
     console.log(`Servidor ejecutándose en http://localhost:${PORT}`);
 });
